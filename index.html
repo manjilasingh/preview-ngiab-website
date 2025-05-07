@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevCon2025 - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            transition: background 0.5s ease;
+        }
+
+        body:hover {
+            background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+        }
+
+        .container {
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-in;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00ff87, #00b4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 180, 255, 0.3);
+            font-weight: 800;
+            transition: all 0.3s ease;
+        }
+
+        h1:hover {
+            transform: scale(1.02);
+            text-shadow: 0 0 30px rgba(0, 180, 255, 0.5);
+        }
+
+        .coming-soon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            color: #60efff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .coming-soon:hover {
+            opacity: 1;
+            transform: scale(1.01);
+            color: #00b4ff;
+        }
+
+        .location {
+            font-size: 1.5rem;
+            color: #60efff;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .year {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00b4ff;
+            margin-top: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00ff87;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0, 255, 135, 0.3);
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            color: #60efff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            .coming-soon {
+                font-size: 2.5rem;
+            }
+            .year {
+                font-size: 2rem;
+            }
+            .countdown {
+                gap: 1rem;
+            }
+            .countdown-item {
+                min-width: 70px;
+            }
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="coming-soon">Coming Soon at</div>
+        <h1>DevCon2025</h1>
+        <div class="location">Burlington, Vermont</div>
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startCountdown() {
+            console.log('Starting countdown...');
+            
+            // Set target date to May 28, 2025 9am
+            const targetDate = new Date('2025-05-28T09:00:00-04:00');
+            console.log('Target date:', targetDate);
+            
+            function updateTimer() {
+                const now = new Date();
+                console.log('Current time:', now);
+                
+                const diff = targetDate - now;
+                console.log('Time difference (ms):', diff);
+                
+                if (diff <= 0) {
+                    console.log('Countdown finished');
+                    document.getElementById("days").textContent = "00";
+                    document.getElementById("hours").textContent = "00";
+                    document.getElementById("minutes").textContent = "00";
+                    document.getElementById("seconds").textContent = "00";
+                    return;
+                }
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                console.log('Calculated time:', { days, hours, minutes, seconds });
+                
+                document.getElementById("days").textContent = String(days).padStart(2, '0');
+                document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+                document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+            }
+            
+            updateTimer();
+            return setInterval(updateTimer, 1000);
+        }
+        
+        window.onload = startCountdown;
+    </script>
+</body>
+</html> 
