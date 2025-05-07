@@ -12,205 +12,74 @@
     <title>NGIAB Website - Coming Soon</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-            color: #ffffff;
+            color: #fff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 20px;
-            transition: background 0.5s ease;
         }
-
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #1a1a1a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid #00ff87;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .error-message {
-            color: #ff4444;
-            background: rgba(255, 68, 68, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            display: none;
-        }
-
-        .error-message.visible {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
         .container {
             max-width: 800px;
-            animation: fadeIn 1.5s ease-in;
-            padding: 2rem;
-            border-radius: 15px;
-            transition: transform 0.3s ease;
+            animation: fadeIn 1s ease;
         }
-
         h1 {
             font-size: 5rem;
-            margin-bottom: 1.5rem;
             background: linear-gradient(45deg, #00ff87, rgb(49, 125, 140));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 20px rgba(0, 180, 255, 0.3);
-            font-weight: 800;
-            transition: all 0.3s ease;
+            margin-bottom: 1rem;
         }
-
-        h1:hover {
-            transform: scale(1.02);
-            text-shadow: 0 0 30px rgba(0, 180, 255, 0.5);
-        }
-
         .coming-soon {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
             color: #7ad8eb;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            margin-bottom: 1rem;
         }
-
-
         .location {
             font-size: 1.5rem;
             color: #60efff;
             margin-bottom: 2rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
         }
-
-        .year {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #00b4ff;
-            margin-top: 1.5rem;
-            animation: pulse 2s infinite;
-        }
-
         .countdown {
             display: flex;
             justify-content: center;
             gap: 2rem;
             margin-top: 2rem;
         }
-
         .countdown-item {
             text-align: center;
             min-width: 100px;
         }
-
         .countdown-number {
             font-size: 2.5rem;
-            font-weight: 700;
             color: #00ff87;
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(0, 255, 135, 0.3);
         }
-
         .countdown-label {
             font-size: 1rem;
             color: #60efff;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
-
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
         @media (max-width: 600px) {
-            h1 {
-                font-size: 3.5rem;
-            }
-            .coming-soon {
-                font-size: 2.5rem;
-            }
-            .year {
-                font-size: 2rem;
-            }
-            .countdown {
-                gap: 1rem;
-            }
-            .countdown-item {
-                min-width: 70px;
-            }
-            .countdown-number {
-                font-size: 1.8rem;
-            }
-            .countdown-label {
-                font-size: 0.8rem;
-            }
+            h1 { font-size: 3.5rem; }
+            .coming-soon { font-size: 2.5rem; }
+            .countdown { gap: 1rem; }
+            .countdown-item { min-width: 70px; }
+            .countdown-number { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
-    <div class="loading">
-        <div class="loading-spinner"></div>
-    </div>
-
     <div class="container">
         <div class="coming-soon">Coming Soon at</div>
         <h1>DevCon2025</h1>
@@ -233,78 +102,37 @@
                 <div class="countdown-label">Seconds</div>
             </div>
         </div>
-        <div class="error-message" id="errorMessage">
-            Unable to load countdown. Please refresh the page.
-        </div>
     </div>
 
     <script>
-        // Hide loading spinner when page is ready
-        window.addEventListener('load', function() {
-            const loading = document.querySelector('.loading');
-            loading.classList.add('hidden');
-        });
-
-        function startCountdown() {
-            try {
-                // Set target date to May 28, 2025 9am
-                const targetDate = new Date('2025-05-28T09:00:00-04:00');
-                
-                function updateTimer() {
-                    try {
-                        const now = new Date();
-                        const diff = targetDate - now;
-                        
-                        if (diff <= 0) {
-                            const container = document.querySelector('.container');
-                            const message = document.createElement('div');
-                            message.style.color = '#00ff87';
-                            message.style.fontSize = '1.5rem';
-                            message.style.marginTop = '2rem';
-                            message.style.opacity = '0';
-                            message.style.transition = 'opacity 1s ease';
-                            message.textContent = 'Website is now live at ngiab.ciroh.org';
-                            container.appendChild(message);
-                            
-                            setTimeout(() => {
-                                message.style.opacity = '1';
-                            }, 100);
-                            
-                            setTimeout(() => {
-                                window.location.href = 'https://ngiab.ciroh.org';
-                            }, 3000);
-                            
-                            return;
-                        }
-                        
-                        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                        
-                        document.getElementById("days").textContent = String(days).padStart(2, '0');
-                        document.getElementById("hours").textContent = String(hours).padStart(2, '0');
-                        document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-                        document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
-                        
-                        // Hide error message if it was shown
-                        document.getElementById('errorMessage').classList.remove('visible');
-                    } catch (error) {
-                        console.error('Error updating timer:', error);
-                        document.getElementById('errorMessage').classList.add('visible');
-                    }
-                }
-                
-                updateTimer();
-                return setInterval(updateTimer, 1000);
-            } catch (error) {
-                console.error('Error starting countdown:', error);
-                document.getElementById('errorMessage').classList.add('visible');
+        const targetDate = new Date('2025-05-28T09:00:00-04:00');
+        
+        function updateTimer() {
+            const diff = targetDate - new Date();
+            
+            if (diff <= 0) {
+                const message = document.createElement('div');
+                message.style.cssText = 'color:#00ff87;font-size:1.5rem;margin-top:2rem;opacity:0;transition:opacity 1s';
+                message.textContent = 'Website is now live at ngiab.ciroh.org';
+                document.querySelector('.container').appendChild(message);
+                setTimeout(() => message.style.opacity = '1', 100);
+                setTimeout(() => window.location.href = 'https://ngiab.ciroh.org', 3000);
+                return;
             }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").textContent = String(days).padStart(2, '0');
+            document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
         }
         
-        // Start countdown when page is ready
-        window.onload = startCountdown;
+        updateTimer();
+        setInterval(updateTimer, 1000);
     </script>
 </body>
 </html> 
